@@ -1,20 +1,36 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="container">
+    <div class="card">
+      <div class="card__content">
+        <div class="card__header">
+          <h1 class="header">Custom Dropdown</h1>
+        </div>
+        <div class="card__body">
+          <div class="card__left">
+            <div class="dropdown-container" [class.focused]="isDropdownFocused">
+              <div class="selected-option" (click)="toggleDropdown()">
+                <span>{{ selectedOption.label }}</span>
+                <img class="chevron-icon" src="/assets/icon/chevron.svg" alt="Dropdown Arrow" [ngClass]="{ 'is-dropdown-open': isDropdownOpen }" />
+              </div>
+              <div class="dropdown-options" *ngIf="isDropdownOpen">
+                <div *ngFor="let option of dropdownOptions" (click)="selectOption(option)" [ngClass]="{ 'selected-option': selectedOption.value === option.value }">
+                  <span>{{ option.label }}</span>
+                  <img class="check-icon" *ngIf="selectedOption.value === option.value" src="/assets/icon/check.svg" alt="Check Icon" />
+                </div>
+              </div>
+            </div>
+            <div class="selected-data">
+              <p>Selected: {{ selectedOption.label }}</p>
+            </div>
+          </div>
+          <hr class="vertical-hr" />
+          <div class="card__right">
+            <p>This is a design example</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+
 </ion-content>

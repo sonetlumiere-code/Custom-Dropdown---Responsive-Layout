@@ -1,27 +1,112 @@
-#container {
-  text-align: center;
+.container {
+  background-image: url('/assets/img/background.png');
+  min-height: 100vh;
+  font-family: 'AbbVoice';
+  font-size: 14px;
+  color: #1F1F1F;
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  .card {
+
+    .card__content {
+      background-color: #FFFFFF;
+      max-width: 700px;
+      border-radius: 4px;
+      padding: 8px 20px;
+    
+      .card__header {
+        width: 100%;
+        margin-bottom: 20px;
+        .header {
+          font-size: 20px;
+          font-weight: bold;
+        }
+      }
+    
+      .card__body {
+        display: flex;
+        justify-content: space-around;
+    
+        .card__left {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+        
+          .dropdown-container {
+            border: 1px solid #1F1F1F;
+            border-radius: 4px;
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            width: 400px;
+      
+            &.focused {
+              border: 2px solid #3366FF;
+            }
+        
+            .selected-option {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 10px 20px;
+              cursor: pointer;
+      
+              .chevron-icon {
+                transition: transform 0.3s ease;
+                transform: rotate(180deg);
+                filter: brightness(25%);
+              
+                &.is-dropdown-open {
+                  transform: rotate(0deg);
+                  filter: none;
+                }
+              }
+            }
+          
+            .dropdown-options {
+              position: absolute;
+              width: 100%;
+              background-color: #FFFFFF;
+              border-radius: 4px;
+              overflow: hidden;
+              z-index: 1;
+              box-shadow: 0 4px 26px rgba(0, 0, 0, 0.5);
+          
+              div {
+                padding: 10px 20px;
+                cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+          
+                &.selected-option {
+                  background-color: #3366FF;
+                  color: #FFFFFF;
+                }
+          
+                &:hover {
+                  background-color: #3366FF;
+                  color: #FFFFFF;
+                }
+          
+                .check-icon {
+                  display: inline;
+                  margin-left: 5px;
+                }
+              }
+            }
+          }
+      
+          .selected-data {
+            font-weight: bold;
+          }
+        }
+    
+        .vertical-hr { 
+          border:         none;
+          border-left:    1px solid hsla(200, 10%, 50%, 0.5);
+          height:         11vh;
+        }      
+      }
+    }
+  }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
