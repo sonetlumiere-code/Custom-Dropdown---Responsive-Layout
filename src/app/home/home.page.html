@@ -10,26 +10,17 @@
           </div>
           <div class="card__body">
             <div class="card__left">
-              <div class="dropdown-container" [class.focused]="isDropdownFocused">
-                <div class="selected-item" (click)="toggleDropdown()">
-                  <span>{{ selectedOption.label }}</span>
-                  <img class="chevron-icon" src="/assets/icon/chevron.svg" alt="Dropdown Arrow" [ngClass]="{ 'is-dropdown-open': isDropdownOpen }" />
-                </div>
-                <div class="dropdown-options" *ngIf="isDropdownOpen">
-                  <div 
-                    class="dropdown-options__option"
-                    *ngFor="let option of dropdownOptions"
-                    (click)="selectOption(option)"
-                    [ngClass]="{ 'selected-option': selectedOption.value === option.value }"
-                  >
-                    <span>{{ option.label }}</span>
-                    <img class="check-icon" *ngIf="selectedOption.value === option.value" src="/assets/icon/check.svg" alt="Check Icon" />
-                  </div>
-                </div>
-              </div>
+
+              <app-dropdown
+                [dropdownOptions]="dropdownOptions"
+                (handleSelectOption)="selectOption($event)"
+                [selectedOption]="selectedOption"
+              ></app-dropdown>
+
               <div class="selected-data">
                 <p>Selected: {{ selectedOption.label }}</p>
               </div>
+              
             </div>
             <hr class="vertical-hr" />
             <div class="card__right">

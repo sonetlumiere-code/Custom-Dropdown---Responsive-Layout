@@ -11,8 +11,6 @@ interface DropdownOption {
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  isDropdownFocused = false;
-  isDropdownOpen = false;
   dropdownOptions: DropdownOption[] = [
     { label: 'Custom Dropdown test', value: 1 },
     { label: 'Second Dropdown option', value: 2 },
@@ -21,22 +19,15 @@ export class HomePage {
     { label: 'But not less important', value: 5 },
     { label: 'The latest option in the dropdown', value: 6 },
   ];
+
   selectedOption!: DropdownOption;
-  
+
   constructor() {
     this.selectedOption = this.dropdownOptions[0];
   }
 
-  toggleDropdown() {
-    this.isDropdownOpen = !this.isDropdownOpen;
-    this.isDropdownFocused = !this.isDropdownFocused;
+  selectOption(event: any) {
+    this.selectedOption = event;
+    console.log(this.selectedOption);
   }
-
-  selectOption(option: DropdownOption) {
-    this.selectedOption = option;
-    this.isDropdownOpen = false;
-    this.isDropdownFocused = false;
-    console.log(this.selectedOption)
-  }
-
 }
