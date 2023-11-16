@@ -1,32 +1,40 @@
 <ion-content [fullscreen]="true">
 
   <div class="container">
-    <div class="card">
-      <div class="card__content">
-        <div class="card__header">
-          <h1 class="header">Custom Dropdown</h1>
-        </div>
-        <div class="card__body">
-          <div class="card__left">
-            <div class="dropdown-container" [class.focused]="isDropdownFocused">
-              <div class="selected-option" (click)="toggleDropdown()">
-                <span>{{ selectedOption.label }}</span>
-                <img class="chevron-icon" src="/assets/icon/chevron.svg" alt="Dropdown Arrow" [ngClass]="{ 'is-dropdown-open': isDropdownOpen }" />
-              </div>
-              <div class="dropdown-options" *ngIf="isDropdownOpen">
-                <div *ngFor="let option of dropdownOptions" (click)="selectOption(option)" [ngClass]="{ 'selected-option': selectedOption.value === option.value }">
-                  <span>{{ option.label }}</span>
-                  <img class="check-icon" *ngIf="selectedOption.value === option.value" src="/assets/icon/check.svg" alt="Check Icon" />
+    <div class="container__left-section"></div>
+    <div class="container__right-section">
+      <div class="card">
+        <div class="card__content">
+          <div class="card__header">
+            <h1 class="header">Custom Dropdown</h1>
+          </div>
+          <div class="card__body">
+            <div class="card__left">
+              <div class="dropdown-container" [class.focused]="isDropdownFocused">
+                <div class="selected-item" (click)="toggleDropdown()">
+                  <span>{{ selectedOption.label }}</span>
+                  <img class="chevron-icon" src="/assets/icon/chevron.svg" alt="Dropdown Arrow" [ngClass]="{ 'is-dropdown-open': isDropdownOpen }" />
+                </div>
+                <div class="dropdown-options" *ngIf="isDropdownOpen">
+                  <div 
+                    class="dropdown-options__option"
+                    *ngFor="let option of dropdownOptions"
+                    (click)="selectOption(option)"
+                    [ngClass]="{ 'selected-option': selectedOption.value === option.value }"
+                  >
+                    <span>{{ option.label }}</span>
+                    <img class="check-icon" *ngIf="selectedOption.value === option.value" src="/assets/icon/check.svg" alt="Check Icon" />
+                  </div>
                 </div>
               </div>
+              <div class="selected-data">
+                <p>Selected: {{ selectedOption.label }}</p>
+              </div>
             </div>
-            <div class="selected-data">
-              <p>Selected: {{ selectedOption.label }}</p>
+            <hr class="vertical-hr" />
+            <div class="card__right">
+              <p class="hint-text">This is a design example</p>
             </div>
-          </div>
-          <hr class="vertical-hr" />
-          <div class="card__right">
-            <p>This is a design example</p>
           </div>
         </div>
       </div>
